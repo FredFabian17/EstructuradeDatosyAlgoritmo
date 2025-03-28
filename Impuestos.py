@@ -72,8 +72,60 @@ bono = calculate_bono(income_monthly, years)
 print("-----------------------------------")
 print(f"El bono de Ley 87 es: RD$ {bono:,.2f}")
 print("-----------------------------------")
-# Calcular el monto total que recibira el empleado
-# El monto total es el ingreso mensual menos el impuesto mensual mas el bono
-total = income_monthly - monthly_tax + bono
-print(f"El monto total que recibira el empleado es: RD$ {total:,.2f}")
+print("Como indicaste que tienes", years, "años en la empresa")
+print("-----------------------------------------------------------------------------------------------------------")
+# calcular el Bono Vacacional
+# si tienes menos de 1 año, el bono es de 0%
+# si tienes entre 1 y 5 años, el bono es de 15%
+# si tienes mas de 5 años, el bono es de 50%
+# si tienes mas de 10 años, el bono es de 100%
+def calculate_bono_vacacional(income_monthly, years):
+    if years < 1:
+        bono_vacacional = 0
+    elif years <= 5:   
+        bono_vacacional = (income_monthly * 15) / 100
+    elif years <= 10:
+        bono_vacacional = (income_monthly * 50) / 100
+    else:
+        bono_vacacional = (income_monthly * 100) / 100
+    return bono_vacacional
+
+bono_vacacional = calculate_bono_vacacional(income_monthly, years)
+print(f"Tu bono vacacional es: RD$ {bono_vacacional:,.2f}")
 print("-----------------------------------")
+
+
+# Solicitar el bono de desempeño
+bono_desempeno = float(input("Ingrese el monto del bono de desempeño en RD$: "))
+
+# Calcular el ingreso total anual incluyendo todos los bonos
+ingreso_total_anual = salario_cotizable_anual + bono + bono_vacacional + bono_desempeno
+print("-----------------------------------")
+print(f"El ingreso total anual (incluyendo bonos) es: RD$ {ingreso_total_anual:,.2f}")
+
+# Recalcular el impuesto anual considerando el ingreso total
+if ingreso_total_anual <= 416220:
+    tax_total = 0  # Exento
+elif ingreso_total_anual <= 624329:
+    excedente = ingreso_total_anual - 416220
+    tax_total = excedente * 0.15
+elif ingreso_total_anual <= 867123:
+    excedente = ingreso_total_anual - 624329
+    tax_total = 31216 + (excedente * 0.20)
+else:
+    excedente = ingreso_total_anual - 867123
+    tax_total = 79776 + (excedente * 0.25)
+
+# Calcular el impuesto adicional pendiente por pagar debido a los bonos
+impuesto_adicional = tax_total - tax
+
+print("-----------------------------------")
+print(f"El impuesto total anual (incluyendo bonos) es: RD$ {tax_total:,.2f}")
+print(f"El impuesto adicional por los bonos es: RD$ {impuesto_adicional:,.2f}")
+print("-----------------------------------")
+
+# Dividir el impuesto adicional entre 12 para obtener el monto mensual adicional
+impuesto_adicional_mensual = impuesto_adicional / 12
+print(f"El impuesto adicional mensual por los bonos es: RD$ {impuesto_adicional_mensual:,.2f}")
+print("-----------------------------------")
+print("Gracias por usar el programa de cálculo de impuestos y bonos.")
