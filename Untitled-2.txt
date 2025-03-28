@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Curso de Infotep</h1>
-    <h2>Prueba de Servidor</h2>
+    <!-- Content goes here -->
 </body>
 </html>
