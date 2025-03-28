@@ -130,6 +130,27 @@ print("-----------------------------------")
 impuesto_adicional_mensual = impuesto_adicional / 12
 print(f"El impuesto adicional mensual por los bonos es: RD$ {impuesto_adicional_mensual:,.2f}")
 print("-----------------------------------")
+print("Resumen de Impuestos y Bonos")
+from tabulate import tabulate
+
+# Datos para la tabla
+tabla_datos = [
+    ["Salario Cotizable Anual", f"RD$ {salario_cotizable_anual:,.2f}"],
+    ["Bono de Ley 87", f"RD$ {bono:,.2f}"],
+    ["Bono Vacacional", f"RD$ {bono_vacacional:,.2f}"],
+    ["Bono de Desempeño", f"RD$ {bono_desempeno:,.2f}"],
+    ["Ingreso Total Anual (incluyendo bonos)", f"RD$ {ingreso_total_anual:,.2f}"],
+    ["Impuesto Total Anual (sin bonos)", f"RD$ {tax:,.2f}"],
+    ["Impuesto Total Anual (con bonos)", f"RD$ {tax_total:,.2f}"],
+    ["Impuesto Adicional por Bonos", f"RD$ {impuesto_adicional:,.2f}"],
+    ["Impuesto Adicional Mensual", f"RD$ {impuesto_adicional_mensual:,.2f}"]
+]
+
+# Imprimir la tabla
+print(tabulate(tabla_datos, headers=["Concepto", "Monto"], tablefmt="grid"))
+print("-----------------------------------")
+print("-----------------------------------------------------------------------------------------------------------")
 print("Gracias por usar el programa de cálculo de impuestos y bonos.")
 
 os.system("pause")
+
