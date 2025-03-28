@@ -1,3 +1,5 @@
+import os
+
 # Vamos a ingresar el ingreso mensual y calcular el ISR Anual y Mensual
 # Según la escala anual proporcionada
 
@@ -129,3 +131,5 @@ impuesto_adicional_mensual = impuesto_adicional / 12
 print(f"El impuesto adicional mensual por los bonos es: RD$ {impuesto_adicional_mensual:,.2f}")
 print("-----------------------------------")
 print("Gracias por usar el programa de cálculo de impuestos y bonos.")
+
+os.system("pause")
