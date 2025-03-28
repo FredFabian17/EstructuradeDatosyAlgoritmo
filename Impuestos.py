@@ -47,3 +47,33 @@ print("-----------------------------------")
 print(f"El impuesto total anual es: RD$ {tax:,.2f}")
 print(f"El impuesto mensual es: RD$ {monthly_tax:,.2f}")
 print(f"El valor que pagas quincenal es: RD$ {monthly_tax / 2:,.2f}")
+
+
+print("-----------------------------------------------------------------------------------------------------------")
+
+# Calcular cuanto me saldra de bono de Ley 87
+# ver cuantos años tienes en la empresa
+# si tiene mas de 5 años, el bono es de 60 dias de salario
+# si tiene entre 1 y 5 años, el bono es de 45 dias de salario
+
+print("¿Cuantos años tienes en la empresa?")
+years = int(input("Ingrese el número de años: "))
+def calculate_bono(income_monthly, years):
+    if years > 5:
+        bono = (income_monthly * 60) / 23.83
+    elif years >= 1:
+        bono = (income_monthly * 45) / 23.83
+    else:
+        bono = 0
+    return bono
+
+# Calcular el bono
+bono = calculate_bono(income_monthly, years)
+print("-----------------------------------")
+print(f"El bono de Ley 87 es: RD$ {bono:,.2f}")
+print("-----------------------------------")
+# Calcular el monto total que recibira el empleado
+# El monto total es el ingreso mensual menos el impuesto mensual mas el bono
+total = income_monthly - monthly_tax + bono
+print(f"El monto total que recibira el empleado es: RD$ {total:,.2f}")
+print("-----------------------------------")
