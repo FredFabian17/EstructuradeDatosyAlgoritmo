@@ -150,7 +150,7 @@ tabla_datos = [
 print(tabulate(tabla_datos, headers=["Concepto", "Monto"], tablefmt="grid"))
 print("-----------------------------------")
 print("-----------------------------------------------------------------------------------------------------------")
-print("Gracias por usar el programa de cálculo de impuestos y bonos.")
+print("Gracias por usar el programa de cálculo de impuestos y bonos\n ~*Fred Fabian*~.")
 
 os.system("pause")
 
