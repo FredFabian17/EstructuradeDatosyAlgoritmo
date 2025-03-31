@@ -14,7 +14,7 @@ salario_cotizable_mensual = income_monthly - AFP - SFS
 salario_cotizable_anual = salario_cotizable_mensual * 12
 
 print("-----------------------------------")
-print(f"Su ingreso mensual es de: RD$ {income_monthly:,.2f}")
+print(f"Su Ingreso mensual es de: RD$ {income_monthly:,.2f}")
 print(f"El descuento por AFP (2.87%) es: RD$ {AFP:,.2f}")
 print(f"El descuento por SFS (3.04%) es: RD$ {SFS:,.2f}")
 print(f"Su salario cotizable mensual es de: RD$ {salario_cotizable_mensual:,.2f}")
