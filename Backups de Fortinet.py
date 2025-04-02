@@ -35,7 +35,7 @@ def realizar_backup(ip, usuario, password, nombre_dispositivo):
     time.sleep(1)  # Esperar a que se establezca la conexión
 
     # Ejecutar el comando para iniciar el backup
-    shell.send("config global\n")
+    shell.send("config system \n")
     time.sleep(1)
     shell.send("exec backup config flash\n")
     time.sleep(1)
