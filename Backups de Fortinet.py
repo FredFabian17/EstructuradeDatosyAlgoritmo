@@ -1,11 +1,18 @@
+import os
 from netmiko import ConnectHandler
 import datetime
 
+# Solicitar datos al usuario
+host = input("Ingrese la dirección IP del dispositivo Fortinet: ")
+username = input("Ingrese el usuario para la conexión SSH: ")
+password = input("Ingrese la contraseña para la conexión SSH: ")
+nombre_archivo = input("Ingrese el nombre del archivo de backup (sin extensión): ")
+
 # Configuración del dispositivo Fortinet
 fw_01 = {
-    'host': '192.168.126.130',
-    'username': 'admin',
-    'password': 'admin',
+    'host': host,
+    'username': username,
+    'password': password,
     'device_type': 'fortinet',
     'port': 22,
 }
@@ -27,10 +34,10 @@ try:
 
     # Guardar la configuración en un archivo
     fecha_actual = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    nombre_archivo = f"backup_{fw_01['host']}_{fecha_actual}.conf"
-    with open(nombre_archivo, "w") as backup_file:
+    archivo_completo = f"{nombre_archivo}_{fecha_actual}.conf"
+    with open(archivo_completo, "w") as backup_file:
         backup_file.write(full_config)
-    print(f"Backup guardado en: {nombre_archivo}")
+    print(f"Backup guardado en: {archivo_completo}")
 
 except Exception as e:
     print(f"Error: {e}")
@@ -38,3 +45,4 @@ finally:
     # Cerrar la conexión
     net_connect.disconnect()
     print("Conexión cerrada.")
+os.system("pause")
